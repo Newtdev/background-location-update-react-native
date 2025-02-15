@@ -1,97 +1,110 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Background Location Services: Beyond the Basics
 
-# Getting Started
+A comprehensive demo implementation of background location tracking in React Native, showcasing continuous location updates for applications like E-hailing platforms. This repository accompanies our article exploring the implementation of background location tracking using `react-native-geolocation-service` and `react-native-background-actions`.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+![Demo](https://github.com/user-attachments/assets/d8bc5cb0-9720-4e8e-8aee-308f636ec852)
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Background Location Tracking**: Continuous location updates even when the app is in the background
+- **Cross-Platform Support**: Implementations for both Android and iOS with platform-specific configurations
+- **Customizable**: Configurable settings for update intervals and distance filters
+- **Foreground & Background Services**: Simple UI with "Start task" and "Stop task" buttons
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Prerequisites
 
-```sh
-# Using npm
-npm start
+- Node.js
+- Yarn or npm
+- React Native development environment (Android Studio for Android, Xcode for iOS)
+- Basic React Native knowledge
 
-# OR using Yarn
-yarn start
+## Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/react-native-background-location-demo.git
+   cd react-native-background-location-demo
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   yarn install
+   # or
+   npm install
+   ```
+
+3. **iOS Setup**:
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+
+## Setup & Configuration
+
+### iOS Configuration
+
+Add the following keys to your `Info.plist`:
+
+```xml
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>App needs location access for tracking</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>App needs location access for background tracking</string>
+<key>UIBackgroundModes</key>
+<array>
+    <string>location</string>
+</array>
 ```
 
-## Step 2: Build and run your app
+### Android Configuration
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Add these permissions to your `AndroidManifest.xml`:
 
-### Android
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+```
 
-```sh
-# Using npm
+## Usage
+
+### Running the Project
+
+```bash
+# For Android
+yarn react-native run-android
+# or
 npm run android
 
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# For iOS
+yarn react-native run-ios
+# or
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Basic Operations
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+1. **Start Location Tracking**:
+   - Tap the "Start task" button
+   - The app will begin tracking location in the background
 
-## Step 3: Modify your app
+2. **Stop Location Tracking**:
+   - Tap the "Stop task" button
+   - Location tracking service will be stopped
+   - Location watcher will be cleared
 
-Now that you have successfully run the app, let's make changes!
+## License
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Support
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+If you encounter any issues or have questions:
+- Open an issue in this repository
+- Check out our detailed article about the implementation
+- Review the demo video and screenshots
 
-## Congratulations! :tada:
+---
 
-You've successfully run and modified your React Native App. :partying_face:
+Built with ❤️ by NewtDev
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Happy coding!
